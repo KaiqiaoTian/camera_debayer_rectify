@@ -9,9 +9,11 @@
     <node pkg="nodelet" type="nodelet" name="camera_nodelet_manager" args="manager" cwd="node" output="screen" />
 
     <!-- Debayer the image -->
+    <!-- from image_raw to image_mono and image_color -->
     <node pkg="nodelet" type="nodelet" name="image_proc_debayer" args="load image_proc/debayer camera_nodelet_manager" />
 
     <!-- Apply lens rectification -->
+    
     <node pkg="nodelet" type="nodelet" name="image_proc_rectify" args="load image_proc/rectify camera_nodelet_manager" >
       <remap from="image_mono" to="image_color" />
       <remap from="image_rect" to="image_rect_color" />
